@@ -26,7 +26,7 @@ public class Lexer {
 
     public static int line = 1; // contador de linhas
 
-    private static final int VAZIO = 65535, TKDESC = 1,LITERALMALFORMADA = 2;
+    private static final int VAZIO = 65535, TKDESC = 1,LITERALMALFORMADA = 2, CONSTANTEMAFORMADA = 3, IDENTIFICADORMALFORMADO = 4;
     public static final String SVAZIO = "65535";
 
     private char caracterAtual = ' '; // caractere lido do arquivo
@@ -56,7 +56,6 @@ public class Lexer {
         // Insere palavras reservadas na HashTable
         reserve(new Word("program", Tag.PROGRAM));
         reserve(new Word("begin", Tag.BEGIN));
-        reserve(new Word("start", Tag.START));
         reserve(new Word("end", Tag.END));
         reserve(new Word("int", Tag.INT));
         reserve(new Word("string", Tag.STRING));
@@ -103,6 +102,12 @@ public class Lexer {
         } 
         else if(tipo == LITERALMALFORMADA){
             System.out.println("\t ERRO (LITERAL MAL FORMADO) - Linha:"+line);
+        }
+        else if (tipo == CONSTANTEMAFORMADA){
+            System.out.println("\t ERRO (CONSTANTE MÁ FORMADA) - Linha:"+line);
+        }
+        else if (tipo == IDENTIFICADORMALFORMADO) {
+            System.out.println("\t ERRO (IDENTIFICADOR MAL FORMADO) - Linha:"+line);
         }
     }
 
@@ -217,26 +222,24 @@ public class Lexer {
                     return new Token(Tag.OP_COMPARA, line);
             }
             case '<':
-                if (readch('=')) {
+                readch();
+                if (caracterAtual == '=') {
                     return new Token(Tag.OP_LTE, line);
-                } else {
-                    readch();
+                } 
+                else if (caracterAtual == '>'){
+                    return new Token(Tag.OP_NOTEQUAL, line);
+                }
+                else {
                     return new Token(Tag.OP_LT, line);
                 }
+               
+
             case '>':
-                if (readch('=')) {
+                readch();
+                if (caracterAtual == '=') {
                     return new Token(Tag.OP_GTE, line);
                 } else {
                     return new Token(Tag.OP_GT, line);
-                }
-            case '!': {
-                    if(readch('=')){
-                        return new Token(Tag.OP_NOTEQUAL, line);
-                    }
-                    else{
-                        erro(TKDESC);
-                        return new Token(String.valueOf('!'), line);
-                    }
                 }
             case '&': {
                     if(readch('&')){
@@ -271,11 +274,14 @@ public class Lexer {
         // Numeros
         if (Character.isDigit(caracterAtual)) {
             float value = 0;
-            int casaDecimal = 1;
-            do {
+            do {                
+                value += Character.digit(caracterAtual, 10);
                 readch();
-            } while (Character.isDigit(caracterAtual) || caracterAtual == '.');
-            return new Integer_const((int) value, line);
+            } while (Character.isDigit(caracterAtual));
+            
+            //if(!Character.isDigit(caracterAtual)) erro(CONSTANTEMAFORMADA);
+            if (Character.isLetter(caracterAtual)) erro (IDENTIFICADORMALFORMADO);
+            else return new Integer_const((int) value, line);
         }
         // Identificadores
         if (Character.isLetter(caracterAtual) || caracterAtual == '_') {
@@ -283,8 +289,8 @@ public class Lexer {
             do {
                 sb.append(caracterAtual);
                 readch();
-            } while (Character.isLetterOrDigit(caracterAtual));
-
+            } while (Character.isLetterOrDigit(caracterAtual) || caracterAtual == '_');
+            
             String s = sb.toString();
             Word w = words.get(s);
 
@@ -294,7 +300,7 @@ public class Lexer {
             w = new Word(s, Tag.IDENTIFIER, line);
                 
             if (!s.equals("_")) 
-                words.put(s, w);
+                words.put(s, w);                
             else erro (LITERALMALFORMADA);
             return w;
         }

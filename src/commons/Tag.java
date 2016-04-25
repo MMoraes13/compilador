@@ -17,7 +17,6 @@ public class Tag {
             IDENTIFIER = "IDENTIFIER",
             VARIABLE = "VARIABLE-DECL",
             BEGIN = "BEGIN",
-            START = "START",
             STOP = "STOP",
             INT = "INT",
             STRING = "REAL",
