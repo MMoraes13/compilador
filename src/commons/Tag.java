@@ -15,7 +15,7 @@ public class Tag {
             
             PROGRAM = "PROGRAM",
             IDENTIFIER = "IDENTIFIER",
-            VARIABLE = "VARIABLE-DECL",
+            VARIABLE = "VAR",
             BEGIN = "BEGIN",
             STOP = "STOP",
             INT = "INT",
@@ -39,7 +39,7 @@ public class Tag {
             IS = "IS",
             IN = "IN",
             INT_CONST = "INTEGER_CONST",
-            
+            THEN = "THEN",
             ABRECHAVE = "ABRECHAVE",
             FECHACHAVE = "FECHACHAVE",
             ABREPARENTESE = "ABREPARENTESE",

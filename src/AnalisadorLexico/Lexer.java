@@ -69,6 +69,7 @@ public class Lexer {
         reserve (new Word ("is", Tag.IS));
         reserve(new Word ("in", Tag.IN));
         reserve (new Word("var", Tag.VARIABLE));
+        reserve( new Word ("then", Tag.THEN));
     }
 
     /*
@@ -299,10 +300,12 @@ public class Lexer {
             }
             w = new Word(s, Tag.IDENTIFIER, line);
                 
-            if (!s.equals("_")) 
-                words.put(s, w);                
-            else erro (LITERALMALFORMADA);
-            return w;
+            if (!s.equals("_")) {
+                words.put(s, w); 
+                return w;
+            }   
+            else erro (IDENTIFICADORMALFORMADO);
+            
         }
         // Caracteres nao especificados
 

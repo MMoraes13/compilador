@@ -1,0 +1,10 @@
+var a, b, aux is int;
+
+	in (a);
+	in(b);
+	aux := 0;
+	aux := b;
+	b := a;
+	a := b;
+	out (a);
+	out (b);
