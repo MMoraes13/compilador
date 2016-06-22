@@ -12,6 +12,7 @@ package token;
 public class Token {
 
     public final String tag; // constante que representa o token
+    private String tipo;
     int line = 1;
 
     public Token(String t) {
@@ -41,6 +42,14 @@ public class Token {
     
     public void setLine(int line){
         this.line = line;
+    }
+
+    public String getTipo() {
+       return tipo;
+    }
+
+    public void setTipo(String tag) {
+        tipo = tag;
     }
 
 }

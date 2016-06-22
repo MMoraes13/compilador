@@ -5,6 +5,7 @@
  */
 package ts;
 
+
 /**
  *
  * @author MMoraes
@@ -32,7 +33,7 @@ public class Id {
     public String getNome() {
         return nome;
     }
-
+    
     /**
      * @param nome the nome to set
      */

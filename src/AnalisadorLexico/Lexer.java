@@ -12,6 +12,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Hashtable;
 import commons.Tag;
+import java.util.ArrayList;
 import token.Comentario;
 import token.Integer_const;
 import token.Literal;
@@ -33,7 +34,7 @@ public class Lexer {
     private String fileName;
     private FileReader file;
     private Hashtable<String, Word> words = new Hashtable<String, Word>();
-
+    private ArrayList <Word> wordsWaitingType = new ArrayList <Word> ();
     /*
      * Metodo para inserir palavras reservadas na HashTable
      */
@@ -69,7 +70,9 @@ public class Lexer {
         reserve (new Word ("is", Tag.IS));
         reserve(new Word ("in", Tag.IN));
         reserve (new Word("var", Tag.VARIABLE));
-        reserve( new Word ("then", Tag.THEN));
+        reserve (new Word ("then", Tag.THEN));
+        reserve (new Word ("and", Tag.LOGIC_AND));
+        wordsWaitingType = new ArrayList <Word> ();
     }
 
     /*
@@ -285,7 +288,7 @@ public class Lexer {
             else return new Integer_const((int) value, line);
         }
         // Identificadores
-        if (Character.isLetter(caracterAtual) || caracterAtual == '_') {
+        if (Character.isLetter(caracterAtual)) {
             StringBuilder sb = new StringBuilder();
             do {
                 sb.append(caracterAtual);
@@ -293,13 +296,13 @@ public class Lexer {
             } while (Character.isLetterOrDigit(caracterAtual) || caracterAtual == '_');
             
             String s = sb.toString();
+            
             Word w = words.get(s);
-
             if (w != null) {
                 return new Word(w.getLexeme(), w.getTag(), line);
             }
             w = new Word(s, Tag.IDENTIFIER, line);
-                
+            
             if (!s.equals("_")) {
                 words.put(s, w); 
                 return w;

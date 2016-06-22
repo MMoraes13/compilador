@@ -1,6 +1,4 @@
-var 
-a, b, c is int;
- result is int
+var result, a, b, c is int;
 begin
  in (a);
  in (c);

@@ -1,6 +1,5 @@
- a, _s is int;
- b is int;
- nome is string;
+var a, s, b is int;
+nome is string;
 begin
  in (a);
  in (nome);

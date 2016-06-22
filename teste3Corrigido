@@ -1,12 +1,17 @@
 var
-
- i, j, k, total, soma is int;
+ _cont is int;
+ media, altura, soma_ is int;
  begin
-i := 4 * (5-3 * 50 / 10;
-j := i * 10;
-k := i* j / k;
-k := 4 + a;
-out(i);
-out(j);
-out(k);
+ _cont := 5;
+ soma := 0;
+ do
+
+ out({Altura: });
+ in (altura);
+ soma := soma altura;
+ _cont := _cont - 1;
+
+ while(_cont);
+ out({Media: });
+ out (soma / qtd);
  end

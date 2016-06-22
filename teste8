@@ -1,4 +1,3 @@
 start
 	read(a);
 	%a = 629;
-	$(a);

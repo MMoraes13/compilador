@@ -1,13 +1,13 @@
 var
 
- j, k is int;
- a, j real;
+ result, j, k is int;
+ a, j is string;
 
  begin
- read(j);
- read(K);
+ in(j);
+ in(K);
 
- if (k <> 0)
+ if (k < 0) then
  result := j/k
  else
  result := 0

@@ -19,7 +19,7 @@ public class Tag {
             BEGIN = "BEGIN",
             STOP = "STOP",
             INT = "INT",
-            STRING = "REAL",
+            STRING = "STRING",
             IF = "IF",
             END = "END",
             ELSE = "ELSE",
@@ -66,6 +66,7 @@ public class Tag {
             OP_GTE = "OP_GTE",
             OP_LT = "OP_LT",
             OP_LTE = "OP_LTE",
-            OP_NOTEQUAL = "OP_NOTEQUAL";
+            OP_NOTEQUAL = "OP_NOTEQUAL",
+            LOGIC_AND = "AND";
     
 }

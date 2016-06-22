@@ -15,13 +15,13 @@ public class Word extends Token {
 
     private String lexeme = "";
 
-    public Word(String s, String tag) {
-        super(tag);
+    public Word(String s, String tipo) {
+        super(tipo);
         lexeme = s;
     }
     
-    public Word(String s, String tag, int line) {
-        super(tag, line);
+    public Word(String s, String tipo, int line) {
+        super(tipo, line);
         lexeme = s;
     }
     
