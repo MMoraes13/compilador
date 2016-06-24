@@ -15,6 +15,7 @@ public class Id {
     private String nome;
     private String tipo;
     private int nivel;
+    private int linha;
 
     public Id(String nome, String tipo, int nivel) {
         super();

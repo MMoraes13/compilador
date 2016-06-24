@@ -12,8 +12,6 @@ import commons.Tag;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 //import semantic.Semantic;
 import token.Token;
 import token.Word;
@@ -89,11 +87,14 @@ public class Compilador {
                     System.out.println(erro);
                 }                
             }    
-            syn.run();
+            syn.run(env);
 
             for (String erro : syn.getSyntacticErrors()) {
                 System.out.println(erro);
-            }              
+            }
+            for (String erro : syn.getSemanticErrors()) {
+                System.out.println(erro);
+            }             
             System.out.println("---- LISTA DE TOKENS IDENTIFICADOS E TABELAS DE SIMBOLOS----");  
              env.imprimir(); 
                                   

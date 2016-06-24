@@ -5,13 +5,12 @@
  */
 package AnalisadorSintatico;
 
+import AnalisadorSemantico.Semantic;
 import java.util.LinkedList;
 import java.util.List;
 import commons.Tag;
-import static compilador.Compilador.env;
 import java.util.ArrayList;
 import token.Token;
-import token.Word;
 import ts.Env;
 import ts.Id;
 
@@ -27,18 +26,24 @@ public class Synctatic {
     private String tipo;
     private List<String> synctacticErrors;
     private List<String> semanticErrors;
-    private ArrayList <Token> expression;
+    private ArrayList <Id> expression;
     private String lastType;
-    
+    private Id aux;
+    private Semantic sem;
+    private Env env;
     public Synctatic() {
+        
         tokens = new LinkedList<>();
         synctacticErrors = new ArrayList<>();
         semanticErrors = new ArrayList<>();
         expression = new ArrayList <> ();
         lastType = "";
+        aux = new Id("");
+        sem = new Semantic();
     }
 
-    public void run() {
+    public void run(Env env) {
+        this.env = env;
         token = tokens.get(0);
         switch (token.getTag()) {
             case Tag.BEGIN:
@@ -137,6 +142,14 @@ public class Synctatic {
                 stmtList();
                 break;
         }
+
+        for (Id i : expression) {
+            if (!expression.get(1).getTipo().equals (i.getTipo())){ 
+                semanticError("tipos incompatíveis", 0, expression.get(1).getNome()+" e "+i.getNome());
+                System.out.println ("****"+i.getNome()+" "+i.getTipo()+"***"+expression.get(1).getNome()+" e "+expression.get(0).getTipo());
+            }    
+        }
+        expression = new ArrayList<>();        
     }
 
 /*   private void body() {
@@ -166,7 +179,8 @@ public class Synctatic {
     private void stmt() {
         switch (token.getTag()) {
             case Tag.IDENTIFIER: //assign-stmt
-                //aux = env.get(token);
+                aux = env.get(token);
+                if (aux != null) expression.add(aux);
                 eat(Tag.IDENTIFIER);
                 eat(Tag.ATRIBUICAO);
                 simpleExpr();
@@ -226,10 +240,12 @@ public class Synctatic {
     private void constant() {
         
         switch (token.getTag()) {
-            case Tag.INTEGER_CONST:      
+            case Tag.INTEGER_CONST:    
+                if (!sem.checkIntegerType(token) && !lastType.equals("int")) semanticError("Integer_Const", token.getLine(), token.getTipo());
                 eat(Tag.INTEGER_CONST);
                 break;
             case Tag.LITERAL:
+                if(!sem.checkLiteralType(token)) semanticError("Literal", token.getLine(), token.getTipo());
                 eat (Tag.LITERAL);
                 break;
             default:
@@ -291,7 +307,6 @@ public class Synctatic {
             case Tag.LITERAL:
                 eat(Tag.LITERAL);
                 break;
-
             case Tag.LOGIC_AND:
                 eat(Tag.LOGIC_AND);                
             case Tag.IDENTIFIER:
@@ -331,17 +346,18 @@ public class Synctatic {
         }
     }
 
-    private void term() {
-        
-        
+    private void term() { 
+           
         switch (token.getTag()) {
-            case Tag.IDENTIFIER:
-                //aux = env.get(token);                
+            case Tag.IDENTIFIER:                      
+                aux = env.get(token);  
+                if (aux != null) {
+                    expression.add (aux);
+                }  
                 eat(Tag.IDENTIFIER);
-  //              if (//aux != null) lastType = //aux.getTipo();
                 break;
             case Tag.LITERAL:
-                eat (Tag.LITERAL);
+                eat (Tag.LITERAL);                
                 break;
             case Tag.FLOAT_CONST:
             case Tag.INTEGER_CONST:
@@ -382,8 +398,8 @@ public class Synctatic {
                 operator();
                 expression();
                 break;
-
         }
+
     }
 
     private void writable() {

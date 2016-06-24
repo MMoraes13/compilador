@@ -1,10 +1,11 @@
 var a, s, b is int;
 nome is string;
 begin
+ a := 3;
  in (a);
  in (nome);
- b := a * a;
- b := b + a/2 * (3 + 5);
+ b := a * nome;
+ b := nome + a/2 * (3 + 5);
  out (nome);
  out(b);
 end
