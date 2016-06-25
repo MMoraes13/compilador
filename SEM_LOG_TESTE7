@@ -1,0 +1,67 @@
+---- LISTA DE TOKENS IDENTIFICADOS E TABELAS DE SIMBOLOS----
+Nome: aux / Tipo: int
+Nome: begin / Tipo: BEGIN
+Nome: end / Tipo: END
+Nome: out / Tipo: OUT
+Nome: is / Tipo: IS
+Nome: string / Tipo: STRING
+Nome: int / Tipo: INT
+Nome: in / Tipo: IN
+Nome: b / Tipo: string
+Nome: a / Tipo: int
+Nome: var / Tipo: VAR
+---- LISTA DO ANALISADOR SINTÁTICO ----
+VAR : <(VAR),(var)>	Linha: 1
+IDENTIFIER : <(IDENTIFIER),(a)>	Linha: 1
+VIRGULA : <(VIRGULA)>	Linha: 1
+IDENTIFIER : <(IDENTIFIER),(aux)>	Linha: 1
+IS : <(IS),(is)>	Linha: 1
+INT : <(INT),(int)>	Linha: 1
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 1
+IDENTIFIER : <(IDENTIFIER),(b)>	Linha: 2
+IS : <(IS),(is)>	Linha: 2
+STRING : <(STRING),(string)>	Linha: 2
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 2
+BEGIN : <(BEGIN),(begin)>	Linha: 3
+IN : <(IN),(in)>	Linha: 4
+ABREPARENTESE : <(ABREPARENTESE)>	Linha: 4
+IDENTIFIER : <(IDENTIFIER),(a)>	Linha: 4
+FECHAPARENTESE : <(FECHAPARENTESE)>	Linha: 4
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 4
+IN : <(IN),(in)>	Linha: 5
+ABREPARENTESE : <(ABREPARENTESE)>	Linha: 5
+IDENTIFIER : <(IDENTIFIER),(b)>	Linha: 5
+FECHAPARENTESE : <(FECHAPARENTESE)>	Linha: 5
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 5
+IDENTIFIER : <(IDENTIFIER),(aux)>	Linha: 6
+ATRIBUICAO : <(ATRIBUICAO)>	Linha: 6
+INTEGER_CONST : <(INTEGER_CONST),(0)>	Linha: 6
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 6
+IDENTIFIER : <(IDENTIFIER),(aux)>	Linha: 7
+ATRIBUICAO : <(ATRIBUICAO)>	Linha: 7
+IDENTIFIER : <(IDENTIFIER),(b)>	Linha: 7
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 7
+IDENTIFIER : <(IDENTIFIER),(b)>	Linha: 8
+ATRIBUICAO : <(ATRIBUICAO)>	Linha: 8
+IDENTIFIER : <(IDENTIFIER),(a)>	Linha: 8
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 8
+IDENTIFIER : <(IDENTIFIER),(a)>	Linha: 9
+ATRIBUICAO : <(ATRIBUICAO)>	Linha: 9
+IDENTIFIER : <(IDENTIFIER),(b)>	Linha: 9
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 9
+OUT : <(OUT),(out)>	Linha: 10
+ABREPARENTESE : <(ABREPARENTESE)>	Linha: 10
+IDENTIFIER : <(IDENTIFIER),(a)>	Linha: 10
+FECHAPARENTESE : <(FECHAPARENTESE)>	Linha: 10
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 10
+OUT : <(OUT),(out)>	Linha: 11
+ABREPARENTESE : <(ABREPARENTESE)>	Linha: 11
+IDENTIFIER : <(IDENTIFIER),(b)>	Linha: 11
+FECHAPARENTESE : <(FECHAPARENTESE)>	Linha: 11
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 11
+END : <(END),(end)>	Linha: 12
+---- ERROS SINTATICOS ----
+---- ERROS SEMANTICOS ----
+Erro na análise semântica, linha7: tipos incompatíveis - b:string e aux:int
+Erro na análise semântica, linha8: tipos incompatíveis - a:int e b:string
+Erro na análise semântica, linha9: tipos incompatíveis - b:string e a:int

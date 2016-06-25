@@ -1,0 +1,77 @@
+---- LISTA DE TOKENS IDENTIFICADOS E TABELAS DE SIMBOLOS----
+Nome: begin / Tipo: BEGIN
+Nome: end / Tipo: END
+Nome: while / Tipo: WHILE
+Nome: out / Tipo: OUT
+Nome: do / Tipo: DO
+Nome: is / Tipo: IS
+Nome: int / Tipo: INT
+Nome: in / Tipo: IN
+Nome: var / Tipo: VAR
+Nome: cont / Tipo: int
+---- LISTA DO ANALISADOR SINTÁTICO ----
+VAR : <(VAR),(var)>	Linha: 1
+IDENTIFIER : <(IDENTIFIER),(cont)>	Linha: 2
+IS : <(IS),(is)>	Linha: 2
+INT : <(INT),(int)>	Linha: 2
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 2
+IDENTIFIER : <(IDENTIFIER),(media)>	Linha: 3
+VIRGULA : <(VIRGULA)>	Linha: 3
+IDENTIFIER : <(IDENTIFIER),(altura)>	Linha: 3
+VIRGULA : <(VIRGULA)>	Linha: 3
+IDENTIFIER : <(IDENTIFIER),(soma)>	Linha: 3
+IS : <(IS),(is)>	Linha: 3
+INT : <(INT),(int)>	Linha: 3
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 3
+BEGIN : <(BEGIN),(begin)>	Linha: 4
+IDENTIFIER : <(IDENTIFIER),(cont)>	Linha: 5
+ATRIBUICAO : <(ATRIBUICAO)>	Linha: 5
+INTEGER_CONST : <(INTEGER_CONST),(5)>	Linha: 5
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 5
+IDENTIFIER : <(IDENTIFIER),(soma)>	Linha: 6
+ATRIBUICAO : <(ATRIBUICAO)>	Linha: 6
+INTEGER_CONST : <(INTEGER_CONST),(0)>	Linha: 6
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 6
+DO : <(DO),(do)>	Linha: 7
+OUT : <(OUT),(out)>	Linha: 9
+ABREPARENTESE : <(ABREPARENTESE)>	Linha: 9
+LITERAL : <(LITERAL),({Altura: })>	Linha: 9
+FECHAPARENTESE : <(FECHAPARENTESE)>	Linha: 9
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 9
+IN : <(IN),(in)>	Linha: 10
+ABREPARENTESE : <(ABREPARENTESE)>	Linha: 10
+IDENTIFIER : <(IDENTIFIER),(altura)>	Linha: 10
+FECHAPARENTESE : <(FECHAPARENTESE)>	Linha: 10
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 10
+IDENTIFIER : <(IDENTIFIER),(soma)>	Linha: 11
+ATRIBUICAO : <(ATRIBUICAO)>	Linha: 11
+IDENTIFIER : <(IDENTIFIER),(soma)>	Linha: 11
+OP_SOMA : <(OP_SOMA)>	Linha: 11
+IDENTIFIER : <(IDENTIFIER),(altura)>	Linha: 11
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 11
+IDENTIFIER : <(IDENTIFIER),(cont)>	Linha: 12
+ATRIBUICAO : <(ATRIBUICAO)>	Linha: 12
+IDENTIFIER : <(IDENTIFIER),(cont)>	Linha: 12
+OP_SUBTRACAO : <(OP_SUBTRACAO)>	Linha: 12
+INTEGER_CONST : <(INTEGER_CONST),(1)>	Linha: 12
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 12
+WHILE : <(WHILE),(while)>	Linha: 13
+IDENTIFIER : <(IDENTIFIER),(cont)>	Linha: 13
+OP_GT : <(OP_GT)>	Linha: 13
+INTEGER_CONST : <(INTEGER_CONST),(0)>	Linha: 13
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 13
+OUT : <(OUT),(out)>	Linha: 14
+ABREPARENTESE : <(ABREPARENTESE)>	Linha: 14
+LITERAL : <(LITERAL),({Media: })>	Linha: 14
+FECHAPARENTESE : <(FECHAPARENTESE)>	Linha: 14
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 14
+OUT : <(OUT),(out)>	Linha: 15
+ABREPARENTESE : <(ABREPARENTESE)>	Linha: 15
+IDENTIFIER : <(IDENTIFIER),(soma)>	Linha: 15
+OP_DIVISAO : <(OP_DIVISAO)>	Linha: 15
+IDENTIFIER : <(IDENTIFIER),(qtd)>	Linha: 15
+FECHAPARENTESE : <(FECHAPARENTESE)>	Linha: 15
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 15
+END : <(END),(end)>	Linha: 16
+---- ERROS SINTATICOS ----
+---- ERROS SEMANTICOS ----

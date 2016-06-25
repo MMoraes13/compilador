@@ -1,5 +1,5 @@
 var a, b, aux is int;
-
+begin
 	in (a);
 	in(b);
 	aux := 0;
@@ -8,3 +8,4 @@ var a, b, aux is int;
 	a := b;
 	out (a);
 	out (b);
+end

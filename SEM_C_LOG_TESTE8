@@ -1,0 +1,27 @@
+---- LISTA DE TOKENS IDENTIFICADOS E TABELAS DE SIMBOLOS----
+Nome: in / Tipo: IN
+Nome: end / Tipo: END
+Nome: a / Tipo: int
+Nome: int / Tipo: INT
+Nome: var / Tipo: VAR
+Nome: begin / Tipo: BEGIN
+Nome: is / Tipo: IS
+---- LISTA DO ANALISADOR SINTÁTICO ----
+VAR : <(VAR),(var)>	Linha: 1
+IDENTIFIER : <(IDENTIFIER),(a)>	Linha: 1
+IS : <(IS),(is)>	Linha: 1
+INT : <(INT),(int)>	Linha: 1
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 1
+BEGIN : <(BEGIN),(begin)>	Linha: 2
+IN : <(IN),(in)>	Linha: 3
+ABREPARENTESE : <(ABREPARENTESE)>	Linha: 3
+IDENTIFIER : <(IDENTIFIER),(a)>	Linha: 3
+FECHAPARENTESE : <(FECHAPARENTESE)>	Linha: 3
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 3
+IDENTIFIER : <(IDENTIFIER),(a)>	Linha: 4
+ATRIBUICAO : <(ATRIBUICAO)>	Linha: 4
+INTEGER_CONST : <(INTEGER_CONST),(17)>	Linha: 4
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 4
+END : <(END),(end)>	Linha: 5
+---- ERROS SINTATICOS ----
+---- ERROS SEMANTICOS ----

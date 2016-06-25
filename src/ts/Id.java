@@ -28,6 +28,14 @@ public class Id {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public Id() {
+        super();
+        this.nome = "";
+        this.nivel = 0;
+        this.tipo = "";
+ //       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      * @return the nome
      */

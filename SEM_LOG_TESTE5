@@ -1,0 +1,41 @@
+---- LISTA DE TOKENS IDENTIFICADOS E TABELAS DE SIMBOLOS----
+Nome: if / Tipo: IF
+Nome: begin / Tipo: BEGIN
+Nome: end / Tipo: END
+Nome: k / Tipo: int
+Nome: out / Tipo: OUT
+Nome: j / Tipo: int
+Nome: is / Tipo: IS
+Nome: int / Tipo: INT
+Nome: in / Tipo: IN
+Nome: else / Tipo: ELSE
+Nome: var / Tipo: VAR
+---- LISTA DO ANALISADOR SINTÁTICO ----
+VAR : <(VAR),(var)>	Linha: 1
+IDENTIFIER : <(IDENTIFIER),(j)>	Linha: 3
+VIRGULA : <(VIRGULA)>	Linha: 3
+IDENTIFIER : <(IDENTIFIER),(k)>	Linha: 3
+IS : <(IS),(is)>	Linha: 3
+INT : <(INT),(int)>	Linha: 3
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 3
+IDENTIFIER : <(IDENTIFIER),(a)>	Linha: 4
+VIRGULA : <(VIRGULA)>	Linha: 4
+IDENTIFIER : <(IDENTIFIER),(j)>	Linha: 4
+IS : <(IS),(is)>	Linha: 4
+INT : <(INT),(int)>	Linha: 4
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 4
+BEGIN : <(BEGIN),(begin)>	Linha: 6
+IN : <(IN),(in)>	Linha: 7
+ABREPARENTESE : <(ABREPARENTESE)>	Linha: 7
+IDENTIFIER : <(IDENTIFIER),(j)>	Linha: 7
+Erro! Token não encontrado: ATRIBUICAO
+Token encontrado: FECHAPARENTESE
+FECHAPARENTESE : <(FECHAPARENTESE)>	Linha: 7
+PONTOVIRGULA : <(PONTOVIRGULA)>	Linha: 7
+IN : <(IN),(in)>	Linha: 8
+ABREPARENTESE : <(ABREPARENTESE)>	Linha: 8
+Erro! Token não encontrado: FECHAPARENTESE
+Token encontrado: IDENTIFIER
+---- ERROS SINTATICOS ----
+---- ERROS SEMANTICOS ----
+Erro na análise semântica, linha8: Variável não declarada- <(IDENTIFIER),(K)>

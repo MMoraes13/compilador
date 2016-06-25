@@ -5,7 +5,7 @@
             <url>src/AnalisadorSintatico/Synctatic.java</url>
             <bookmark id="1">
                 <name/>
-                <line>219</line>
+                <line>235</line>
                 <key/>
             </bookmark>
         </file>
@@ -18,7 +18,9 @@
             <file>file:/C:/Users/MMoraes/Documents/NetBeansProjects/compilador-mateus/src/AnalisadorSemantico/Semantic.java</file>
             <file>file:/C:/Users/MMoraes/Documents/NetBeansProjects/compilador-mateus/src/AnalisadorSintatico/Synctatic.java</file>
             <file>file:/C:/Users/MMoraes/Documents/NetBeansProjects/compilador-mateus/src/token/Word.java</file>
+            <file>file:/C:/Users/MMoraes/Documents/NetBeansProjects/compilador-mateus/src/ts/Id.java</file>
             <file>file:/C:/Users/MMoraes/Documents/NetBeansProjects/compilador-mateus/src/compilador/Compilador.java</file>
+            <file>file:/C:/Users/MMoraes/Documents/NetBeansProjects/compilador-mateus/src/ts/Env.java</file>
         </group>
     </open-files>
 </project-private>

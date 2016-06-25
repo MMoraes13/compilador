@@ -1,3 +1,5 @@
-start
-	read(a);
-	%a = 629;
+
+begin
+	in(a);
+	a := 629;
+end

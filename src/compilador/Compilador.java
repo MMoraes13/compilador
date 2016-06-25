@@ -87,16 +87,19 @@ public class Compilador {
                     System.out.println(erro);
                 }                
             }    
+            System.out.println("---- LISTA DE TOKENS IDENTIFICADOS E TABELAS DE SIMBOLOS----");  
+            env.imprimir();       
+            System.out.println("---- LISTA DO ANALISADOR SINTÁTICO ----"); 
             syn.run(env);
-
+            System.out.println("---- ERROS SINTATICOS ----"); 
             for (String erro : syn.getSyntacticErrors()) {
                 System.out.println(erro);
             }
+            System.out.println("---- ERROS SEMANTICOS ----"); 
             for (String erro : syn.getSemanticErrors()) {
                 System.out.println(erro);
             }             
-            System.out.println("---- LISTA DE TOKENS IDENTIFICADOS E TABELAS DE SIMBOLOS----");  
-             env.imprimir(); 
+
                                   
         }catch (FileNotFoundException ex) {
             ex.printStackTrace();

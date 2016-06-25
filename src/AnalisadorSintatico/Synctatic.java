@@ -31,6 +31,8 @@ public class Synctatic {
     private Id aux;
     private Semantic sem;
     private Env env;
+    private int linhaAtual;
+    
     public Synctatic() {
         
         tokens = new LinkedList<>();
@@ -139,17 +141,22 @@ public class Synctatic {
         switch (token.getTag()) {
             case Tag.PONTOVIRGULA:
                 eat(Tag.PONTOVIRGULA);
-                stmtList();
+                String wrongDecl = "";
+                lastType = "";
+                Id prev = new Id();
+                for (int i = 0; i < expression.size(); i++){
+                    if (!prev.getTipo().equals(expression.get(i).getTipo()) && !prev.getTipo().equals("")) {
+                        wrongDecl += expression.get(i).getNome()+":"+expression.get(i).getTipo()+" e "+prev.getNome()+":"+prev.getTipo();
+                    }
+                    prev = expression.get(i);   
+                }
+                if (!wrongDecl.equals(""))
+                    semanticError("tipos incompatíveis ", token.getLine()-1, wrongDecl);
+                expression = new ArrayList<>();                   
+                stmtList();                     
                 break;
         }
-
-        for (Id i : expression) {
-            if (!expression.get(1).getTipo().equals (i.getTipo())){ 
-                semanticError("tipos incompatíveis", 0, expression.get(1).getNome()+" e "+i.getNome());
-                System.out.println ("****"+i.getNome()+" "+i.getTipo()+"***"+expression.get(1).getNome()+" e "+expression.get(0).getTipo());
-            }    
-        }
-        expression = new ArrayList<>();        
+         
     }
 
 /*   private void body() {
@@ -180,10 +187,18 @@ public class Synctatic {
         switch (token.getTag()) {
             case Tag.IDENTIFIER: //assign-stmt
                 aux = env.get(token);
-                if (aux != null) expression.add(aux);
+                if (aux != null) {
+                    expression.add(aux);                 
+                }
+                else {
+                    
+                    semanticError("Variável não declarada", token.getLine(), token.toString());
+                }
                 eat(Tag.IDENTIFIER);
-                eat(Tag.ATRIBUICAO);
-                simpleExpr();
+                if (token.getTag().equals(Tag.ATRIBUICAO)) {
+                    eat(Tag.ATRIBUICAO);
+                    simpleExpr();  
+                }    
                 break;
             case Tag.IF: //if-stmt 
                 eat(Tag.IF);
@@ -193,6 +208,8 @@ public class Synctatic {
                 stmtList();
                 ifStmtB();
                 break;
+            case Tag.ELSE:
+                break;
             case Tag.END:
                 eat (Tag.END);
                 //eat (Tag.FECHAPARENTESE);              
@@ -201,12 +218,13 @@ public class Synctatic {
             case Tag.DO:
                 eat(Tag.DO);
                 stmtList(); 
+                //eat (Tag.WHILE);
                 stmtSuffix();
                 break;
             case Tag.IN: //read-stmt
                 eat(Tag.IN);
                 eat(Tag.ABREPARENTESE);
-                eat(Tag.IDENTIFIER);
+                stmt();
                 eat(Tag.FECHAPARENTESE);
                 break;
             case Tag.OUT: //write-stmt
@@ -217,6 +235,8 @@ public class Synctatic {
                 break;
             case Tag.THEN:
                 eat(Tag.THEN);
+                break;
+            case Tag.WHILE:
                 break;
             default:
                 synctacticError("stmt - comando nao encontrado: "+token.getTag().toString(), token.getLine());
@@ -241,7 +261,7 @@ public class Synctatic {
         
         switch (token.getTag()) {
             case Tag.INTEGER_CONST:    
-                if (!sem.checkIntegerType(token) && !lastType.equals("int")) semanticError("Integer_Const", token.getLine(), token.getTipo());
+                if (!sem.checkIntegerType(token)) semanticError("Integer_Const", token.getLine(), token.getTipo());
                 eat(Tag.INTEGER_CONST);
                 break;
             case Tag.LITERAL:
